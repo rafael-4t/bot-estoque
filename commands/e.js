@@ -79,8 +79,9 @@ run: async(client, message, args) => {
     //console.log(stormedico);
 
     console.log("Id:")
+    //console.log(typeof(IdentidadeDiscord.id))
     console.log(IdentidadeDiscord.id)
-    var aaa = foo.results.find(item => item.id === 294487193840254988)
+    var aaa = foo.results.find(item => item.id === parseInt(IdentidadeDiscord.id))
     console.log("aa:")
     console.log(aaa)
 
