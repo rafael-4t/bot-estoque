@@ -1,0 +1,19 @@
+{
+    "results": [
+        {
+            "id": 12,
+            "name": "Test",
+            "inj" : 10
+        },
+        {
+            "id": 2,
+            "name": "Beispiel",
+            "inj" : 10
+        },
+        {
+            "id": 3,
+            "name": "Sample",
+            "inj" : 10
+        }
+    ] 
+}

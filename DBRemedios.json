@@ -1,0 +1,46 @@
+{
+    "Remedios" : 
+    [
+        { 
+            "Nome" : "Injeção de Cura",
+            "Descricao":"Regenera tudo Humanos/Cavalos",
+            "PrecoMedico" : 1,
+            "PrecoCidadao" : 3,
+            "LimiteMedico" : 6,
+            "LimiteCidadao" : 1
+        },
+        { 
+            "Nome" : "Balsamo",
+            "Descricao":"Folego 50%",
+            "PrecoMedico" : 0.25,
+            "PrecoCidadao" : 1,
+            "LimiteMedico" : 6,
+            "LimiteCidadao" : 1 
+        },
+        { 
+            "Nome" : "Pomada de Zinco",
+            "Descricao":"Cura 50%",
+            "PrecoMedico" : 0.75,
+            "PrecoCidadao" : 2.5,
+            "LimiteMedico" : 12,
+            "LimiteCidadao" : 2
+        },
+        { 
+            "Nome" : "Xarope",
+            "Descricao":"Cura 40% Fadiga 30% Sacies 20%",
+            "PrecoMedico" : 0.75,
+            "PrecoCidadao" : 2.5,
+            "LimiteMedico" : 12,
+            "LimiteCidadao" : 2
+        },
+        { 
+            "Nome" : "test",
+            "Descricao":"descrição de test",
+            "PrecoMedico" : 1,
+            "PrecoCidadao" : 1,
+            "LimiteMedico" : 1,
+            "LimiteCidadao" : 1
+        } 
+      
+    ]
+}

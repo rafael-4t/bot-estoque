@@ -1,0 +1,25 @@
+{
+    
+    "294487193840254988" : [
+        {
+            "DT_Name" : "1079 - Jackson",
+            "Inje" : 0,
+            "Bals" : 0,
+            "Poma" : 0,
+            "Xaro" : 0,
+            "PrecoTotal"  : 0
+        }
+    ],
+
+    "100000000000000000" : [
+        {
+            "DT_Name" : "vazio",
+            "Inje" : 0,
+            "Bals" : 0,
+            "Poma" : 0,
+            "Xaro" : 0,
+            "PrecoTotal"  : 0
+        }
+    ]
+    
+}
