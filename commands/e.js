@@ -1,17 +1,7 @@
 // Ajuda em: discord.gg/PEdmSZzCAv
 const Discord = require("discord.js");
 const edb = require("../DBRemedios.json");
-//const mdb = require("../DBMedicos.json");
-//const foo = require("../medicosDB.json");
-//console.log(edb.Remedios[1]);
-
-/*
-var sammy = { 
-  "first_name"  :  "Sammy", 
-  "last_name"   :  "Shark", 
-  "online"      :  true 
-}
-*/
+var foo = require("../medicosDB.json");
 
 var IdentidadeDiscord = [];
 var stormedico = new Array();
@@ -51,18 +41,6 @@ function limiteMedicamentos() {
 
 }
 
-
-/*
-client.on('message', message => {
-  console.log(message.author.id); // Expected output: '189746913631797249'
-  console.log(message.author.username); // Expected output: 'Jimmy'
-  message.channel.send(`Hello ${message.author.username}! Your id is ${message.author.id}!`);
-})
-*/
-//IdentidadeDiscord = message.author;
-//console.log(IdentidadeDiscord);
-
-
 module.exports = {
     name: "encomenda V13",
     author: "Rafael At",
@@ -71,7 +49,13 @@ run: async(client, message, args) => {
 
     let cor_das_embeds = "RANDOM";
 
-    var foo = require("../medicosDB.json");
+    //////////////////////////////////////////////////////////
+    //Exemplo Json
+    const fs = require('fs');
+    let rawdata = fs.readFileSync('student.json');
+    let student = JSON.parse(rawdata);
+    console.log(student);
+
     IdentidadeDiscord = message.author;
     console.log("Identidade Discord")
     console.log(IdentidadeDiscord);
