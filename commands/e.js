@@ -1,7 +1,8 @@
 // Ajuda em: discord.gg/PEdmSZzCAv
 const Discord = require("discord.js");
 const edb = require("../DBRemedios.json");
-const mdb = require("../DBMedicos.json");
+//const mdb = require("../DBMedicos.json");
+//const foo = require("../medicosDB.json");
 //console.log(edb.Remedios[1]);
 
 /*
@@ -30,12 +31,17 @@ var PomadaZinco = 0;
 var Xarope      = 0;
 var PrecoTotal = 0;
 
+var InjLimit = 0;
+var BalLimit = 0;
+var PomLimit = 0;
+var XarLimit = 0;
+
 function limiteMedicamentos() {
   
-  if (InjecaoCura > Inj.LimiteMedico) {    InjecaoCura = Inj.LimiteMedico;  }
-  if (Balsamo > Bal.LimiteMedico)  {    Balsamo     = Bal.LimiteMedico;  }
-  if (PomadaZinco > Pom.LimiteMedico)  {    PomadaZinco = Pom.LimiteMedico;  }
-  if (Xarope > Xar.LimiteMedico)  {    Xarope      = Xar.LimiteMedico;  }
+  if (InjecaoCura > (Inj.LimiteMedico - InjLimit) )  {    InjecaoCura = Inj.LimiteMedico - InjLimit;  }
+  if (Balsamo > (Bal.LimiteMedico - BalLimit) )      {    Balsamo     = Bal.LimiteMedico - BalLimit;  }
+  if (PomadaZinco > (Pom.LimiteMedico - PomLimit) )  {    PomadaZinco = Pom.LimiteMedico - PomLimit;  }
+  if (Xarope > (Xar.LimiteMedico - XarLimit) )       {    Xarope      = Xar.LimiteMedico - XarLimit;  }
 /*
   InjecaoCura = Inj.LimiteMedico;
   Balsamo     = Bal.LimiteMedico;
@@ -65,10 +71,23 @@ run: async(client, message, args) => {
 
     let cor_das_embeds = "RANDOM";
 
+    var foo = require("../medicosDB.json");
     IdentidadeDiscord = message.author;
+    console.log("Identidade Discord")
     console.log(IdentidadeDiscord);
-    stormedico = mdb.IdentidadeDiscord;
-    console.log(stormedico);
+    //stormedico = mdb.IdentidadeDiscord;
+    //console.log(stormedico);
+
+    console.log("Id:")
+    console.log(IdentidadeDiscord.id)
+    var aaa = foo.results.find(item => item.id === 294487193840254988)
+    console.log("aa:")
+    console.log(aaa)
+
+    InjLimit = aaa.Inje;
+    BalLimit = aaa.Bals;
+    PomLimit = aaa.Poma;
+    XarLimit = aaa.Xaro;
 
     let embed_1 = new Discord.MessageEmbed()
 

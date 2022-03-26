@@ -1,7 +1,6 @@
 const Discord = require("discord.js"); 
 const client = new Discord.Client({intents: 32767});
 const config = require("./config.json"); 
-const foo = require("./medicosDB.json");
 
 client.login(config.token); 
 
@@ -14,8 +13,6 @@ client.once('ready', async () => {
     //client.channels.cache.get("bot-estoque_medico-logs").then(channel => channel.send('Welcome'))
 })
 
-const aaa = foo.results.find(item => item.id === 294487193840254988)
-console.log(aaa)
 
 client.on('message', msg =>{
     if(msg.content === 'bot?') {
