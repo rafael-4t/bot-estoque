@@ -1,7 +1,7 @@
 // Ajuda em: discord.gg/PEdmSZzCAv
 const Discord = require("discord.js");
 const edb = require("../DBRemedios.json");
-var foo = require("../medicosDB.json");
+//var foo = require("../medicosDB.json");
 
 var IdentidadeDiscord = [];
 var stormedico = new Array();
@@ -52,22 +52,31 @@ run: async(client, message, args) => {
     //////////////////////////////////////////////////////////
     //Exemplo Json
     const fs = require('fs');
-    let rawdata = fs.readFileSync('student.json');
-    let student = JSON.parse(rawdata);
-    console.log(student);
+    let rawdata = fs.readFileSync('medicosDB.json');
+    let foo = JSON.parse(rawdata);
+    //console.log(foo);
+
+    //----------------------------------------
+    //const fs = require('fs');
+
+    let student = foo;
+    
+    let data = JSON.stringify(student, null, 2);
+    fs.writeFileSync('student-2.json', data);
+    //----------------------------------------
 
     IdentidadeDiscord = message.author;
-    console.log("Identidade Discord")
-    console.log(IdentidadeDiscord);
+    //console.log("Identidade Discord")
+    //console.log(IdentidadeDiscord);
     //stormedico = mdb.IdentidadeDiscord;
     //console.log(stormedico);
 
-    console.log("Id:")
+    console.log("Id Discord (Pedido):")
     //console.log(typeof(IdentidadeDiscord.id))
     console.log(IdentidadeDiscord.id)
     var aaa = foo.results.find(item => item.id === parseInt(IdentidadeDiscord.id))
-    console.log("aa:")
-    console.log(aaa)
+    //console.log("aa:")
+    //console.log(aaa)
 
     InjLimit = aaa.Inje;
     BalLimit = aaa.Bals;
