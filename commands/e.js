@@ -1,9 +1,12 @@
 // Ajuda em: discord.gg/PEdmSZzCAv
 const Discord = require("discord.js");
+const fs = require('fs');
+const fileName = 'medicosDB.json';
 const edb = require("../DBRemedios.json");
-//var foo = require("../medicosDB.json");
 
 var IdentidadeDiscord = [];
+var IdentidadeDiscordNick = [];
+
 var stormedico = new Array();
 
 var Inj = new Array();
@@ -20,6 +23,9 @@ var Balsamo     = 0;
 var PomadaZinco = 0;
 var Xarope      = 0;
 var PrecoTotal = 0;
+var PresoTotal = 0;
+
+
 
 var InjLimit = 0;
 var BalLimit = 0;
@@ -32,28 +38,39 @@ function limiteMedicamentos() {
   if (Balsamo > (Bal.LimiteMedico - BalLimit) )      {    Balsamo     = Bal.LimiteMedico - BalLimit;  }
   if (PomadaZinco > (Pom.LimiteMedico - PomLimit) )  {    PomadaZinco = Pom.LimiteMedico - PomLimit;  }
   if (Xarope > (Xar.LimiteMedico - XarLimit) )       {    Xarope      = Xar.LimiteMedico - XarLimit;  }
-/*
+
+  /*
   InjecaoCura = Inj.LimiteMedico;
   Balsamo     = Bal.LimiteMedico;
   PomadaZinco = Pom.LimiteMedico;
   Xarope      = Xar.LimiteMedico;
-*/
+  */
+
+}
+
+function lerBanco (){
+    var rawdata = fs.readFileSync(fileName);
+    var foo = JSON.parse(rawdata);
+    //console.log(foo);
+    return foo;
 }
 
 function salvarNovoLimite() {
   
-  console.log("salvarNovoLimite")
+  //console.log("salvarNovoLimite")
   aaa.Inje = aaa.Inje + InjecaoCura;
   aaa.Bals = aaa.Bals + Balsamo;
   aaa.Poma = aaa.Poma + PomadaZinco;
   aaa.Xaro = aaa.Xaro + Xarope;
 
+if (foo !== undefined){ 
 fs.writeFile(fileName, JSON.stringify(foo, null, 2), function writeJSON(err) {
   if (err) return console.log(err);
   //console.log(JSON.stringify(foo));
-  console.log('writing to ' + fileName);
-
+  console.log('Escrenvendo em: ' + fileName);
 });
+}
+
 }
 
 module.exports = {
@@ -66,11 +83,14 @@ run: async(client, message, args) => {
 
     //////////////////////////////////////////////////////////
     //Exemplo Json############################################
-    const fs = require('fs');
+    
+    foo = lerBanco();
+    /*
     let fileName = 'medicosDB.json';
     let rawdata = fs.readFileSync(fileName);
     let foo = JSON.parse(rawdata);
     console.log(foo);
+    */
 
     //----------------------------------------
     //const fs = require('fs');
@@ -82,6 +102,8 @@ run: async(client, message, args) => {
     //----------------------------------------
 
     IdentidadeDiscord = message.author;
+    IdentidadeDiscordNick = message.member.nickname;
+    //console.log(message.member.nickname);
     //data.member.nickname)
     //console.log(guild.member(message.author))
     //console.log(message.guild.member.displayName)
@@ -93,18 +115,40 @@ run: async(client, message, args) => {
     console.log("Id Discord (Pedido):")
     //console.log(typeof(IdentidadeDiscord.id))
     console.log(IdentidadeDiscord.id)
+    console.log(message.member.nickname)
+    
     var aaa = foo.results.find(item => item.id === IdentidadeDiscord.id)//parseInt(IdentidadeDiscord.id))
-    var aaab = foo.results.find(item => item.id === "1")//parseInt(IdentidadeDiscord.id))
-    console.log("antes:")
-    if (aaab === undefined){ 
+    //var aaab = foo.results.find(item => item.id === "1")//parseInt(IdentidadeDiscord.id))
+    
+    //console.log(aaa)
+    if (aaa === undefined){ 
       console.log("Criando novo usuário:")
       console.log(IdentidadeDiscord.id) 
+      //foo.results = 
+      
+      var adicaoBD = {
+        "id": IdentidadeDiscord.id,
+        "name": IdentidadeDiscord.username,
+        "Inje": 0,
+        "Bals": 0,
+        "Poma": 0,
+        "Xaro": 0
+      }
 
-
+      foo.results[foo.results.length] = adicaoBD;
+      
+      if (foo !== undefined){ 
+      fs.writeFile(fileName, JSON.stringify(foo, null, 2), function writeJSON(err) {
+        if (err) return console.log(err);
+        //console.log(JSON.stringify(foo));
+        console.log('Escrenvendo em: ' + fileName);
+      });
+      }
+      aaa = lerBanco();
+      aaa = foo.results.find(item => item.id === IdentidadeDiscord.id)
     }
-    console.log(aaa)
-    //aaa.Inje++;
 
+    //aaa.Inje++;
 
 /*
     fs.writeFile(fileName, JSON.stringify(foo, null, 2), function writeJSON(err) {
@@ -113,15 +157,6 @@ run: async(client, message, args) => {
       console.log('writing to ' + fileName);
     });
 */
-    console.log("depois:")
-    console.log(aaa)
-
-    console.log("tentativa de acesso:")
-    console.log(foo.results[0].name)
-
-    
-    //console.log("aa:")
-    //console.log(aaa)
 
     InjLimit = aaa.Inje;
     BalLimit = aaa.Bals;
@@ -135,19 +170,20 @@ run: async(client, message, args) => {
     .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
     //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
     .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-    .setDescription(`**__Olá ${message.author}, os comandos com as reações estão abaixo:__**\n\n\`◀️\` ***Painel Inicial (Zerar pedido)***\n\`⏫\` ***Adicionar Tudo***\n\`💉\` ***Injeção de Cura***\n\`🍀\` ***Balsamo***\n\`🥫\` ***Pomada de Zinco***\n\`🍶\` ***Xarope***\n\`❌\` ***Fechar Painel***`)
+    .setDescription(`**${message.member.nickname}, os comandos com as reações estão abaixo:**\n\n\`◀️\` ***Painel Inicial (Zerar pedido)***\n\`⏫\` ***Adicionar Tudo***\n\`💉\` ***Injeção de Cura***\n\`🍀\` ***Balsamo***\n\`🥫\` ***Pomada de Zinco***\n\`🍶\` ***Xarope***\n\`❌\` ***Fechar Painel***`)
     //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
     .setColor(cor_das_embeds);
 
-    message.reply({ content: `${message.author}`, embeds: [embed_1] }).then(msg => {
+    //message.reply({ content: `${message.author}`, embeds: [embed_1] }).then(msg => {
+      message.reply({ embeds: [embed_1] }).then(msg => {
 
-      msg.react("❌")
-      msg.react("⏫")
       msg.react("◀️")
+      msg.react("⏫")
       msg.react("💉")
       msg.react("🍀")
       msg.react("🥫")
       msg.react("🍶")
+      msg.react("❌")
 
       let filtro_1 = (r, u) => r.emoji.name === '◀️' && u.id === message.author.id; let coletor_1 = msg.createReactionCollector({ filter: filtro_1});
       let filtro_10 = (r, u) => r.emoji.name === '⏫' && u.id === message.author.id; let coletor_10 = msg.createReactionCollector({ filter: filtro_10});
@@ -160,17 +196,19 @@ run: async(client, message, args) => {
       coletor_1.on("collect", (ralfa) => {
         
         ralfa.users.remove(message.author.id); // Parte que retira a reação do usuário
-        InjecaoCura = 0; Balsamo = 0; PomadaZinco = 0; Xarope = 0; PrecoTotal = 0;
+        InjecaoCura = 0; Balsamo = 0; PomadaZinco = 0; Xarope = 0; PrecoTotal = 0; PresoTotal = 0;
         let embed_2 = new Discord.MessageEmbed()
 
         .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
         //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription(`**__Olá ${message.author}, os comandos com as reações estão abaixo:__**\n\n\`◀️\` ***Painel Inicial (Zerar pedido)***\n\`💉\` ***Injeção de Cura***\n\`🍀\` ***Balsamo***\n\`🥫\` ***Pomada de Zinco***\n\`🍶\` ***Xarope***\n\`❌\` ***Fechar Painel***`)
+        .setDescription(`**__Olá ${message.member.nickname}, os comandos com as reações estão abaixo:__**\n\n\`◀️\` ***Painel Inicial (Zerar pedido)***\n\`💉\` ***Injeção de Cura***\n\`🍀\` ***Balsamo***\n\`🥫\` ***Pomada de Zinco***\n\`🍶\` ***Xarope***\n\`❌\` ***Fechar Painel***`)
         //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         .setColor(cor_das_embeds);
         
-        msg.edit({ content: `${message.author}`, embeds: [embed_2] });
+        //msg.edit({ content: `${message.author}`, embeds: [embed_2] });
+        msg.edit({embeds: [embed_2] });
+
 
       });
 
@@ -189,11 +227,13 @@ run: async(client, message, args) => {
         .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
         //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription(`** \`${categoria}\` \n ${message.author} você encomendou:\n Injeções de Cura        ${InjecaoCura} \n Balsamo                                        ${Balsamo} \n Pomada de Zinco     ${PomadaZinco}  \n  Xarope                                              ${Xarope} \n\n...**`)
+        .setDescription(`** \`${categoria}\` \n ${message.member.nickname} você encomendou:\n Injeções de Cura        ${InjecaoCura}/${Inj.LimiteMedico - aaa.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteMedico - aaa.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteMedico - aaa.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteMedico - aaa.Xaro} \n\n...**`)
         //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         .setColor(cor_das_embeds);
         
-        msg.edit({ content: `${message.author}`, embeds: [embed_3] });
+        //msg.edit({ content: `${message.author}`, embeds: [embed_3] });
+        msg.edit({ embeds: [embed_3] });
+
 
       });
 
@@ -211,11 +251,11 @@ run: async(client, message, args) => {
         .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
         //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription(`** \`${categoria}\` \n ${message.author} você encomendou:\n Injeções de Cura        ${InjecaoCura} \n Balsamo                                        ${Balsamo} \n Pomada de Zinco     ${PomadaZinco}  \n  Xarope                                              ${Xarope} \n\n...**`)
+        .setDescription(`** \`${categoria}\` \n ${message.member.nickname} você encomendou:\n Injeções de Cura        ${InjecaoCura}/${Inj.LimiteMedico - aaa.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteMedico - aaa.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteMedico - aaa.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteMedico - aaa.Xaro} \n\n...**`)
         //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         .setColor(cor_das_embeds);
         
-        msg.edit({ content: `${message.author}`, embeds: [embed_4] });
+        msg.edit({ embeds: [embed_4] });
 
       });
 
@@ -232,11 +272,11 @@ run: async(client, message, args) => {
         .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
         //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription(`** \`${categoria}\` \n ${message.author} você encomendou:\n Injeções de Cura        ${InjecaoCura} \n Balsamo                                        ${Balsamo} \n Pomada de Zinco     ${PomadaZinco}  \n  Xarope                                              ${Xarope} \n\n...**`)
+        .setDescription(`** \`${categoria}\` \n ${message.member.nickname} você encomendou:\n Injeções de Cura        ${InjecaoCura}/${Inj.LimiteMedico - aaa.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteMedico - aaa.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteMedico - aaa.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteMedico - aaa.Xaro} \n\n...**`)
         //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         .setColor(cor_das_embeds);
         
-        msg.edit({ content: `${message.author}`, embeds: [embed_5] });
+        msg.edit({ embeds: [embed_5] });
 
       });
 
@@ -254,17 +294,18 @@ run: async(client, message, args) => {
         .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
         //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription(`** \`${categoria}\` \n ${message.author} você encomendou:\n Injeções de Cura        ${InjecaoCura} \n Balsamo                                        ${Balsamo} \n Pomada de Zinco     ${PomadaZinco}  \n  Xarope                                              ${Xarope} \n\n...**`)
+        .setDescription(`** \`${categoria}\` \n ${message.member.nickname} você encomendou:\n Injeções de Cura        ${InjecaoCura}/${Inj.LimiteMedico - aaa.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteMedico - aaa.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteMedico - aaa.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteMedico - aaa.Xaro} \n\n...**`)
         //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         .setColor(cor_das_embeds);
         
-        msg.edit({ content: `${message.author}`, embeds: [embed_6] });
+        msg.edit({ embeds: [embed_6] });
         
       });
 
       coletor_6.on("collect", (ralfa) => {
 
         PrecoTotal = (InjecaoCura * Inj.PrecoMedico) + (Balsamo * Bal.PrecoMedico) + (PomadaZinco * Pom.PrecoMedico) + (Xarope * Xar.PrecoMedico);
+        PresoTotal = (InjecaoCura * Inj.Peso) + (Balsamo * Bal.Peso) + (PomadaZinco * Pom.Peso) + (Xarope * Xar.Peso);
 
         ralfa.users.remove(message.author.id); // Parte que retira a reação do usuário
 
@@ -274,7 +315,7 @@ run: async(client, message, args) => {
         //.setAuthor(`Fechando painel de pedidos ...`, message.author.displayAvatarURL({ dynamic: true }))
         .setColor(cor_das_embeds);
 
-        msg.edit({ content: `${message.author}`, embeds: [embed_7] });
+        msg.edit({ embeds: [embed_7] });
 
         setTimeout( () => {
 
@@ -282,28 +323,30 @@ run: async(client, message, args) => {
 
             limiteMedicamentos();
             //salvarNovoLimite();
-            console.log("salvarNovoLimite")
+            //console.log("salvarNovoLimite")
             aaa.Inje = aaa.Inje + InjecaoCura;
             aaa.Bals = aaa.Bals + Balsamo;
             aaa.Poma = aaa.Poma + PomadaZinco;
             aaa.Xaro = aaa.Xaro + Xarope;
 
+            if (foo !== undefined){ 
             fs.writeFile(fileName, JSON.stringify(foo, null, 2), function writeJSON(err) {
               if (err) return console.log(err);
               //console.log(JSON.stringify(foo));
-              console.log('writing to ' + fileName);
-
+              console.log('Escrenvendo em: ' + fileName);
             });
+          }
 
             let embed_8 = new Discord.MessageEmbed()
 
             //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
             //.setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
             
-            .setDescription(`O painel de pedidos foi encerrado.\n\n Seu pedido foi:\n\n**Injeções de Cura        ${InjecaoCura} \n Balsamo                                        ${Balsamo} \n Pomada de Zinco     ${PomadaZinco}  \n  Xarope                                              ${Xarope}**\n -------------------------------------------\n**Total:                                                     ${PrecoTotal}$**\n\nDiscord ID = ${IdentidadeDiscord.id}`)
+            .setDescription(`**${message.member.nickname}**\n\n Seu pedido foi:\n\n**Injeções de Cura        ${InjecaoCura} \n Balsamo                                        ${Balsamo} \n Pomada de Zinco     ${PomadaZinco}  \n  Xarope                                              ${Xarope}**\n -------------------------------------------\n**Total:                                                     ${PrecoTotal}$**\nPeso=${PresoTotal.toFixed(2)}Kg\n\nDiscord ID = ${IdentidadeDiscord.id}`)
             .setColor(cor_das_embeds);
 
-            message.reply({ content: `${message.author}`, embeds: [embed_8] });
+            message.reply({ embeds: [embed_8] });
+            //message.reply({ content: `${message.author}`, embeds: [embed_8] });
 
         }, 1000);
         
@@ -330,11 +373,11 @@ run: async(client, message, args) => {
         .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
         //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription(`** \`${categoria}\` \n ${message.author} você encomendou:\n Injeções de Cura        ${InjecaoCura} \n Balsamo                                        ${Balsamo} \n Pomada de Zinco     ${PomadaZinco}  \n  Xarope                                              ${Xarope} \n\n...**`)
+        .setDescription(`** \`${categoria}\` \n ${message.member.nickname} você encomendou:\n Injeções de Cura        ${InjecaoCura}/${Inj.LimiteMedico - aaa.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteMedico - aaa.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteMedico - aaa.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteMedico - aaa.Xaro} \n\n...**`)
         //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         .setColor(cor_das_embeds);
         
-        msg.edit({ content: `${message.author}`, embeds: [embed_6] });
+        msg.edit({ embeds: [embed_6] });
         
       });
 

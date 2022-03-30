@@ -12,7 +12,7 @@ module.exports = {
 
         let embed_1 = new Discord.MessageEmbed()
         .setColor(cor_da_embed)
-        .setDescription(`**\`🏓\` Calculando ping.**`);
+        .setDescription(`**\`🏓\` Calculando ping.**\n`);
         
         let embed_2 = new Discord.MessageEmbed()
         .setColor(cor_da_embed)

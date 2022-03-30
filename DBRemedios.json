@@ -7,7 +7,8 @@
             "PrecoMedico" : 1,
             "PrecoCidadao" : 3,
             "LimiteMedico" : 6,
-            "LimiteCidadao" : 1
+            "LimiteCidadao" : 1,
+            "Peso" : 0.27
         },
         { 
             "Nome" : "Balsamo",
@@ -15,7 +16,8 @@
             "PrecoMedico" : 0.25,
             "PrecoCidadao" : 1,
             "LimiteMedico" : 6,
-            "LimiteCidadao" : 1 
+            "LimiteCidadao" : 1,
+            "Peso" : 0.2
         },
         { 
             "Nome" : "Pomada de Zinco",
@@ -23,7 +25,8 @@
             "PrecoMedico" : 0.75,
             "PrecoCidadao" : 2.5,
             "LimiteMedico" : 12,
-            "LimiteCidadao" : 2
+            "LimiteCidadao" : 2,
+            "Peso" : 0.2
         },
         { 
             "Nome" : "Xarope",
@@ -31,7 +34,8 @@
             "PrecoMedico" : 0.75,
             "PrecoCidadao" : 2.5,
             "LimiteMedico" : 12,
-            "LimiteCidadao" : 2
+            "LimiteCidadao" : 2,
+            "Peso" : 0.2
         },
         { 
             "Nome" : "test",
@@ -39,7 +43,8 @@
             "PrecoMedico" : 1,
             "PrecoCidadao" : 1,
             "LimiteMedico" : 1,
-            "LimiteCidadao" : 1
+            "LimiteCidadao" : 1,
+            "Peso" : 1
         } 
       
     ]
