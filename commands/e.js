@@ -7,7 +7,7 @@ const edb = require("../DBRemedios.json");
 var IdentidadeDiscord = [];
 var IdentidadeDiscordNick = [];
 
-var stormedico = new Array();
+//var stormedico = new Array();
 
 var Inj = new Array();
 Inj = edb.Remedios[0];
@@ -24,8 +24,6 @@ var PomadaZinco = 0;
 var Xarope      = 0;
 var PrecoTotal = 0;
 var PresoTotal = 0;
-
-
 
 var InjLimit = 0;
 var BalLimit = 0;
@@ -49,11 +47,12 @@ function limiteMedicamentos() {
 }
 
 function lerBanco (){
-    var rawdata = fs.readFileSync(fileName);
-    var foo = JSON.parse(rawdata);
-    //console.log(foo);
-    return foo;
+  var rawdata = fs.readFileSync(fileName);
+  var foo = JSON.parse(rawdata);
+  //console.log(foo);
+  return foo;
 }
+
 
 function salvarNovoLimite() {
   
@@ -63,14 +62,13 @@ function salvarNovoLimite() {
   aaa.Poma = aaa.Poma + PomadaZinco;
   aaa.Xaro = aaa.Xaro + Xarope;
 
-if (foo !== undefined){ 
-fs.writeFile(fileName, JSON.stringify(foo, null, 2), function writeJSON(err) {
-  if (err) return console.log(err);
-  //console.log(JSON.stringify(foo));
-  console.log('Escrenvendo em: ' + fileName);
-});
-}
-
+  if (foo !== undefined){ 
+    fs.writeFile(fileName, JSON.stringify(foo, null, 2), function writeJSON(err) {
+      if (err) return console.log(err);
+      //console.log(JSON.stringify(foo));
+      console.log('Escrenvendo em: ' + fileName);
+    });
+  }
 }
 
 module.exports = {
@@ -81,37 +79,11 @@ run: async(client, message, args) => {
 
     let cor_das_embeds = "RANDOM";
 
-    //////////////////////////////////////////////////////////
-    //Exemplo Json############################################
-    
     foo = lerBanco();
-    /*
-    let fileName = 'medicosDB.json';
-    let rawdata = fs.readFileSync(fileName);
-    let foo = JSON.parse(rawdata);
-    console.log(foo);
-    */
-
-    //----------------------------------------
-    //const fs = require('fs');
-
-    //let student = foo;
     
-    //let data = JSON.stringify(student, null, 2);
-    //fs.writeFileSync('student-2.json', data);
-    //----------------------------------------
-
     IdentidadeDiscord = message.author;
     IdentidadeDiscordNick = message.member.nickname;
-    //console.log(message.member.nickname);
-    //data.member.nickname)
-    //console.log(guild.member(message.author))
-    //console.log(message.guild.member.displayName)
-    //console.log("Identidade Discord")
-    //console.log(IdentidadeDiscord);
-    //stormedico = mdb.IdentidadeDiscord;
-    //console.log(stormedico);
-
+    
     console.log("Id Discord (Pedido):")
     //console.log(typeof(IdentidadeDiscord.id))
     console.log(IdentidadeDiscord.id)
@@ -129,6 +101,7 @@ run: async(client, message, args) => {
       var adicaoBD = {
         "id": IdentidadeDiscord.id,
         "name": IdentidadeDiscord.username,
+        "nick": IdentidadeDiscordNick,
         "Inje": 0,
         "Bals": 0,
         "Poma": 0,
@@ -150,13 +123,13 @@ run: async(client, message, args) => {
 
     //aaa.Inje++;
 
-/*
+    /*
     fs.writeFile(fileName, JSON.stringify(foo, null, 2), function writeJSON(err) {
       if (err) return console.log(err);
       //console.log(JSON.stringify(foo));
       console.log('writing to ' + fileName);
     });
-*/
+    */
 
     InjLimit = aaa.Inje;
     BalLimit = aaa.Bals;
@@ -177,13 +150,7 @@ run: async(client, message, args) => {
     //message.reply({ content: `${message.author}`, embeds: [embed_1] }).then(msg => {
       message.reply({ embeds: [embed_1] }).then(msg => {
 
-      msg.react("◀️")
-      msg.react("⏫")
-      msg.react("💉")
-      msg.react("🍀")
-      msg.react("🥫")
-      msg.react("🍶")
-      msg.react("❌")
+      msg.react("◀️"); msg.react("⏫"); msg.react("💉"); msg.react("🍀"); msg.react("🥫"); msg.react("🍶"); msg.react("✅"); msg.react("❌")
 
       let filtro_1 = (r, u) => r.emoji.name === '◀️' && u.id === message.author.id; let coletor_1 = msg.createReactionCollector({ filter: filtro_1});
       let filtro_10 = (r, u) => r.emoji.name === '⏫' && u.id === message.author.id; let coletor_10 = msg.createReactionCollector({ filter: filtro_10});
@@ -191,7 +158,8 @@ run: async(client, message, args) => {
       let filtro_3 = (r, u) => r.emoji.name === '🍀' && u.id === message.author.id; let coletor_3 = msg.createReactionCollector({ filter: filtro_3});
       let filtro_4 = (r, u) => r.emoji.name === '🥫' && u.id === message.author.id; let coletor_4 = msg.createReactionCollector({ filter: filtro_4});
       let filtro_5 = (r, u) => r.emoji.name === '🍶' && u.id === message.author.id; let coletor_5 = msg.createReactionCollector({ filter: filtro_5});
-      let filtro_6 = (r, u) => r.emoji.name === '❌' && u.id === message.author.id; let coletor_6 = msg.createReactionCollector({ filter: filtro_6});
+      let filtro_6 = (r, u) => r.emoji.name === '✅' && u.id === message.author.id; let coletor_6 = msg.createReactionCollector({ filter: filtro_6});
+      let filtro_7 = (r, u) => r.emoji.name === '❌' && u.id === message.author.id; let coletor_7 = msg.createReactionCollector({ filter: filtro_7});
 
       coletor_1.on("collect", (ralfa) => {
         
@@ -211,7 +179,6 @@ run: async(client, message, args) => {
 
 
       });
-
 
       coletor_2.on("collect", (ralfa) => {
 
@@ -352,6 +319,43 @@ run: async(client, message, args) => {
         
       });
 
+      coletor_7.on("collect", (ralfa) => {
+
+        ralfa.users.remove(message.author.id); // Parte que retira a reação do usuário
+
+        let embed_7 = new Discord.MessageEmbed()
+
+        .setAuthor(`Fechando painel`, message.author.displayAvatarURL({ dynamic: true }))
+        .setColor(cor_das_embeds);
+
+        msg.edit({ embeds: [embed_7] });
+
+        setTimeout( () => {
+
+            msg.delete();
+
+            InjecaoCura = 0;
+            Balsamo     = 0;
+            PomadaZinco = 0;
+            Xarope      = 0;
+            PrecoTotal = 0;
+            PresoTotal = 0;
+
+            //let embed_8 = new Discord.MessageEmbed()
+
+            //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
+            //.setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
+            
+            //.setDescription(`**${message.member.nickname}**\n\n Seu pedido foi:\n\n**Injeções de Cura        ${InjecaoCura} \n Balsamo                                        ${Balsamo} \n Pomada de Zinco     ${PomadaZinco}  \n  Xarope                                              ${Xarope}**\n -------------------------------------------\n**Total:                                                     ${PrecoTotal}$**\nPeso=${PresoTotal.toFixed(2)}Kg\n\nDiscord ID = ${IdentidadeDiscord.id}`)
+            //.setColor(cor_das_embeds);
+
+            //message.reply({ embeds: [embed_8] });
+            //message.reply({ content: `${message.author}`, embeds: [embed_8] });
+
+        }, 1000);
+        
+      });
+
       coletor_10.on("collect", (ralfa) => {
 
         ralfa.users.remove(message.author.id); // Parte que retira a reação do usuário
@@ -364,9 +368,6 @@ run: async(client, message, args) => {
         Xarope      = 99;
 
         limiteMedicamentos();
-
-        
-/////////////////////////////////////////////
 
         let embed_6 = new Discord.MessageEmbed()
 

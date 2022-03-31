@@ -2,7 +2,8 @@
   "results": [
     {
       "id": "2944871938402549880",
-      "name": "1079 - Jackson",
+      "name": "RAlfa",
+      "nick": "1079 | Jackson",
       "Inje": 6,
       "Bals": 6,
       "Poma": 12,
@@ -11,26 +12,20 @@
     {
       "id": "294487193840254989",
       "name": "Beispiel",
+      "nick": "111 | Abc",
       "Inje": 0,
       "Bals": 0,
       "Poma": 0,
       "Xaro": 0
     },
     {
-      "id": "507551007954436117",
-      "name": "Adam",
+      "id": "294487193840254988",
+      "name": "RAlfa",
+      "nick": "1079 | Jackson Jones",
       "Inje": 0,
       "Bals": 0,
       "Poma": 0,
-      "Xaro": 1
-    },
-    {
-      "id": "294487193840254988",
-      "name": "RAlfa",
-      "Inje": 6,
-      "Bals": 6,
-      "Poma": 12,
-      "Xaro": 12
+      "Xaro": 0
     }
   ]
 }
