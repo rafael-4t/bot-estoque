@@ -288,33 +288,50 @@ run: async(client, message, args) => {
 
             msg.delete();
 
-            limiteMedicamentos();
-            //salvarNovoLimite();
-            //console.log("salvarNovoLimite")
-            aaa.Inje = aaa.Inje + InjecaoCura;
-            aaa.Bals = aaa.Bals + Balsamo;
-            aaa.Poma = aaa.Poma + PomadaZinco;
-            aaa.Xaro = aaa.Xaro + Xarope;
 
-            if (foo !== undefined){ 
-            fs.writeFile(fileName, JSON.stringify(foo, null, 2), function writeJSON(err) {
-              if (err) return console.log(err);
-              //console.log(JSON.stringify(foo));
-              console.log('Escrenvendo em: ' + fileName);
-            });
-          }
+            if(InjecaoCura != 0 || Balsamo != 0 || PomadaZinco != 0 || Xarope != 0){
 
-            let embed_8 = new Discord.MessageEmbed()
+              limiteMedicamentos();
+              //salvarNovoLimite();
+              //console.log("salvarNovoLimite")
+              aaa.Inje = aaa.Inje + InjecaoCura;
+              aaa.Bals = aaa.Bals + Balsamo;
+              aaa.Poma = aaa.Poma + PomadaZinco;
+              aaa.Xaro = aaa.Xaro + Xarope;
 
-            //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
-            //.setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
+              if (foo !== undefined){ 
+                fs.writeFile(fileName, JSON.stringify(foo, null, 2), function writeJSON(err) {
+                  if (err) return console.log(err);
+                  //console.log(JSON.stringify(foo));
+                  console.log('Escrenvendo em: ' + fileName);
+                });
+              
+
+              let embed_8 = new Discord.MessageEmbed()
+
+              //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
+              //.setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
+              
+              .setDescription(`**${message.member.nickname}**\n\n Seu pedido foi:\n\n**Injeções de Cura        ${InjecaoCura} \n Balsamo                                        ${Balsamo} \n Pomada de Zinco     ${PomadaZinco}  \n  Xarope                                              ${Xarope}**\n -------------------------------------------\n**Total:                                                     ${PrecoTotal}$**\nPeso=${PresoTotal.toFixed(2)}Kg\n\nDiscord ID = ${IdentidadeDiscord.id}`)
+              .setColor(cor_das_embeds);
+
+              message.reply({ embeds: [embed_8] });
+              //message.reply({ content: `${message.author}`, embeds: [embed_8] });
+              }
+            }else{
+              let embed_8 = new Discord.MessageEmbed()
+              .setDescription(`**${message.member.nickname}**\n\n __Você não encomendou nada__ \n\n Discord ID = ${IdentidadeDiscord.id}`)
+              .setColor(cor_das_embeds);  
+              message.reply({ embeds: [embed_8] });
+            }
+
+            InjecaoCura = 0;
+            Balsamo     = 0;
+            PomadaZinco = 0;
+            Xarope      = 0;
+            PrecoTotal = 0;
+            PresoTotal = 0;
             
-            .setDescription(`**${message.member.nickname}**\n\n Seu pedido foi:\n\n**Injeções de Cura        ${InjecaoCura} \n Balsamo                                        ${Balsamo} \n Pomada de Zinco     ${PomadaZinco}  \n  Xarope                                              ${Xarope}**\n -------------------------------------------\n**Total:                                                     ${PrecoTotal}$**\nPeso=${PresoTotal.toFixed(2)}Kg\n\nDiscord ID = ${IdentidadeDiscord.id}`)
-            .setColor(cor_das_embeds);
-
-            message.reply({ embeds: [embed_8] });
-            //message.reply({ content: `${message.author}`, embeds: [embed_8] });
-
         }, 1000);
         
       });
@@ -351,6 +368,10 @@ run: async(client, message, args) => {
 
             //message.reply({ embeds: [embed_8] });
             //message.reply({ content: `${message.author}`, embeds: [embed_8] });
+            let embed_8 = new Discord.MessageEmbed()
+            .setDescription(`**${message.member.nickname}**\n\n __Você não encomendou nada__ \n\n Discord ID = ${IdentidadeDiscord.id}`)
+            .setColor(cor_das_embeds);  
+            message.reply({ embeds: [embed_8] });
 
         }, 1000);
         
