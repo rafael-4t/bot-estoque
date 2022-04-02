@@ -16,13 +16,13 @@ client.once('ready', async () => {
 
 client.on('message', msg =>{
 
-    if(msg.content === 'bot?') {
+    if(msg.content === 'bot?' || msg.content === 'Bot?') {
         
         let gifLinha = "https://cdn.discordapp.com/attachments/664842248328052765/811695564411371550/Linha.gif";
-        msg.reply(gifLinha)
-        const channel = msg.guild.channels.cache.find(channel => channel.name === "channel-name");
-        channel.send("a");
-        //bot.channels.find("name","welcome").send("Welcome!")
+        //msg.reply(gifLinha)
+        msg.channel.send(gifLinha);
+        //msg.channel.send(`Encerrando a semana`);
+        msg.channel.send(gifLinha)
     }
   })
 
