@@ -22,7 +22,7 @@ client.on('message', msg =>{
         //msg.reply(gifLinha)
         msg.channel.send(gifLinha);
         //msg.channel.send(`Encerrando a semana`);
-        msg.channel.send(gifLinha)
+        //msg.channel.send(gifLinha)
     }
   })
 

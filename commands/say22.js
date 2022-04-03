@@ -1,4 +1,23 @@
 const Discord = require("discord.js");
+var moment = module.exports = require("moment-timezone");
+var cron = require("node-cron");
+
+function test() {
+  const d = new Date();
+  console.log('A cada 1 Minuto:', d);
+}
+
+
+//let job1 = new cron.CronJob('01 05 01,13 * * *', test);
+//job1.start();
+console.log('Before job instantiation');
+//const job = cron.schedule('0 */1 * * * *',test ,{scheduled: true,timezone: "America/Sao_Paulo"});
+cron.schedule('* 20 17 * 6', test, {
+  scheduled: true,
+  timezone: "America/Sao_Paulo"
+});
+console.log('After job instantiation');
+//job.start();
 
 module.exports = {
   name: "say",
