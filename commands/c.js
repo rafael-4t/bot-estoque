@@ -143,7 +143,7 @@ run: async(client, message, args) => {
     .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
     //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
     .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-    .setDescription(`**${message.member.nickname}, os comandos com as reações estão abaixo:**\n\n\`◀️\` ***Painel Inicial (Zerar pedido)***\n\`⏫\` ***Adicionar Tudo***\n\`💉\` ***Injeção de Cura***\n\`🍀\` ***Balsamo***\n\`🥫\` ***Pomada de Zinco***\n\`🍶\` ***Xarope***\n\`❌\` ***Fechar Painel***`)
+    .setDescription(`\n\n**__ESPERE TODAS AS REAÇÕES APARECEREM!__**\n\n**${message.member.nickname}, os comandos com as reações estão abaixo:**\n\n\`◀️\` ***Painel Inicial (Zerar pedido)***\n\`⏫\` ***Adicionar Tudo***\n\`💉\` ***Injeção de Cura***\n\`🍀\` ***Balsamo***\n\`🥫\` ***Pomada de Zinco***\n\`🍶\` ***Xarope***\n\`❌\` ***Fechar Painel***`)
     //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
     .setColor(cor_das_embeds);
 

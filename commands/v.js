@@ -150,12 +150,13 @@ run: async(client, message, args) => {
       
       var adicaoBD2 = {
         "id": args[0],
-        "name": args[1],
-        "data": "por data 22",
+        "name": args[1] + " " + args[2],
+        "data": dataHora +" por "+ IdentidadeDiscordNick,
         "Inje": 0,
         "Bals": 0,
         "Poma": 0,
-        "Xaro": 0
+        "Xaro": 0,
+        "add" : "Registrado por " + IdentidadeDiscordNick + " em " + dataHora
       }
     
 
@@ -193,7 +194,7 @@ run: async(client, message, args) => {
     .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
     //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
     .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-    .setDescription(`**${message.member.nickname}** Vendendo para\n ID:**${args[0]}**\n Nome:**${args[1]}**\n Os comandos com as reações estão abaixo:\n\n\`◀️\` ***Painel Inicial (Zerar Venda)***\n\`⏫\` ***Adicionar Tudo***\n\`💉\` ***Injeção de Cura***\n\`🍀\` ***Balsamo***\n\`🥫\` ***Pomada de Zinco***\n\`🍶\` ***Xarope***\n\`✅\` ***Confirmar***\n\`❌\` ***Fechar Painel***`)
+    .setDescription(`\n\n**__ESPERE TODAS AS REAÇÕES APARECEREM!__**\n\n**${message.member.nickname}** Vendendo para:\n ID: **${args[0]}**\n Nome: **${aaa2.name}**\n Os comandos com as reações estão abaixo:\n\n\`◀️\` ***Painel Inicial (Zerar Venda)***\n\`⏫\` ***Adicionar Tudo***\n\`💉\` ***Injeção de Cura***\n\`🍀\` ***Balsamo***\n\`🥫\` ***Pomada de Zinco***\n\`🍶\` ***Xarope***\n\`✅\` ***Confirmar***\n\`❌\` ***Fechar Painel***`)
     //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
     .setColor(cor_das_embeds);
 
@@ -220,7 +221,7 @@ run: async(client, message, args) => {
         .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
         //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription(`**${message.member.nickname}** Vendendo para\n ID: **${args[0]}**\n Nome: **${args[1]}**\n __Os comandos com as reações estão abaixo:__\n\n\`◀️\` ***Painel Inicial (Zerar Venda)***\n\`⏫\` ***Adicionar Tudo***\n\`💉\` ***Injeção de Cura***\n\`🍀\` ***Balsamo***\n\`🥫\` ***Pomada de Zinco***\n\`🍶\` ***Xarope***\n\`✅\` ***Confirmar***\n\`❌\` ***Fechar Painel***`)
+        .setDescription(`**${message.member.nickname}** Vendendo para:\n ID: **${args[0]}**\n Nome: **${aaa2.name}**\n __Os comandos com as reações estão abaixo:__\n\n\`◀️\` ***Painel Inicial (Zerar Venda)***\n\`⏫\` ***Adicionar Tudo***\n\`💉\` ***Injeção de Cura***\n\`🍀\` ***Balsamo***\n\`🥫\` ***Pomada de Zinco***\n\`🍶\` ***Xarope***\n\`✅\` ***Confirmar***\n\`❌\` ***Fechar Painel***`)
         //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         .setColor(cor_das_embeds);
         
@@ -244,7 +245,7 @@ run: async(client, message, args) => {
         .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
         //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription(` \`${categoria}\` \n **${message.member.nickname}** Vendendo para\n ID: **${args[0]}**\n Nome: **${args[1]}**\n Venda:\n **Injeções de Cura        ${InjecaoCura}/${Inj.LimiteCidadao - aaa2.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteCidadao - aaa2.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteCidadao - aaa2.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteCidadao - aaa2.Xaro} \n\n...**`)
+        .setDescription(` \`${categoria}\` \n **${message.member.nickname}** Vendendo para:\n ID: **${args[0]}**\n Nome: **${aaa2.name}**\n Venda:\n **Injeções de Cura        ${InjecaoCura}/${Inj.LimiteCidadao - aaa2.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteCidadao - aaa2.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteCidadao - aaa2.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteCidadao - aaa2.Xaro} \n\n...**`)
         //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         .setColor(cor_das_embeds);
         
@@ -268,7 +269,7 @@ run: async(client, message, args) => {
         .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
         //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription(` \`${categoria}\` \n **${message.member.nickname}** Vendendo para\n ID: **${args[0]}**\n Nome: **${args[1]}**\n Venda:\n **Injeções de Cura        ${InjecaoCura}/${Inj.LimiteCidadao - aaa2.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteCidadao - aaa2.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteCidadao - aaa2.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteCidadao - aaa2.Xaro} \n\n...**`)
+        .setDescription(` \`${categoria}\` \n **${message.member.nickname}** Vendendo para:\n ID: **${args[0]}**\n Nome: **${aaa2.name}**\n Venda:\n **Injeções de Cura        ${InjecaoCura}/${Inj.LimiteCidadao - aaa2.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteCidadao - aaa2.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteCidadao - aaa2.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteCidadao - aaa2.Xaro} \n\n...**`)
         //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         .setColor(cor_das_embeds);
         
@@ -289,7 +290,7 @@ run: async(client, message, args) => {
         .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
         //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription(` \`${categoria}\` \n **${message.member.nickname}** Vendendo para\n ID: **${args[0]}**\n Nome: **${args[1]}**\n Venda:\n **Injeções de Cura        ${InjecaoCura}/${Inj.LimiteCidadao - aaa2.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteCidadao - aaa2.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteCidadao - aaa2.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteCidadao - aaa2.Xaro} \n\n...**`)
+        .setDescription(` \`${categoria}\` \n **${message.member.nickname}** Vendendo para:\n ID: **${args[0]}**\n Nome: **${aaa2.name}**\n Venda:\n **Injeções de Cura        ${InjecaoCura}/${Inj.LimiteCidadao - aaa2.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteCidadao - aaa2.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteCidadao - aaa2.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteCidadao - aaa2.Xaro} \n\n...**`)
         //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         .setColor(cor_das_embeds);
         
@@ -311,7 +312,7 @@ run: async(client, message, args) => {
         .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
         //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription(` \`${categoria}\` \n **${message.member.nickname}** Vendendo para\n ID: **${args[0]}**\n Nome: **${args[1]}**\n Venda:\n **Injeções de Cura        ${InjecaoCura}/${Inj.LimiteCidadao - aaa2.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteCidadao - aaa2.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteCidadao - aaa2.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteCidadao - aaa2.Xaro} \n\n...**`)
+        .setDescription(` \`${categoria}\` \n **${message.member.nickname}** Vendendo para:\n ID: **${args[0]}**\n Nome: **${aaa2.name}**\n Venda:\n **Injeções de Cura        ${InjecaoCura}/${Inj.LimiteCidadao - aaa2.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteCidadao - aaa2.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteCidadao - aaa2.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteCidadao - aaa2.Xaro} \n\n...**`)
         //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         .setColor(cor_das_embeds);
         
@@ -344,45 +345,58 @@ run: async(client, message, args) => {
               limiteMedicamentos();
               //salvarNovoLimite();
               //console.log("salvarNovoLimite")
-              aaa2.Inje = aaa2.Inje + InjecaoCura;
-              aaa2.Bals = aaa2.Bals + Balsamo;
-              aaa2.Poma = aaa2.Poma + PomadaZinco;
-              aaa2.Xaro = aaa2.Xaro + Xarope;
-
-              aaa.Inje = aaa.Inje - InjecaoCura;
-              aaa.Bals = aaa.Bals - Balsamo;
-              aaa.Poma = aaa.Poma - PomadaZinco;
-              aaa.Xaro = aaa.Xaro - Xarope;
               
+              if( (!(aaa.Inje >= InjecaoCura) || !(aaa.Bals >= Balsamo) || !(aaa.Poma >= PomadaZinco) || !(aaa.Xaro >= Xarope) )){
 
-              if (foo2 !== undefined){ 
-                fs.writeFile(fileName2, JSON.stringify(foo2, null, 2), function writeJSON(err) {
-                  if (err) return console.log(err);
-                  console.log('Escrenvendo em: ' + fileName2);
-                });
-              
-                if (foo !== undefined){ 
-                  fs.writeFile(fileName, JSON.stringify(foo, null, 2), function writeJSON(err) {
+                let embed_8 = new Discord.MessageEmbed()
+                .setDescription(`**${message.member.nickname}**\n\n __**VENDA NEGADA!**__ \n\n Verifique seu estoque, pois as quantidades não batem.\nTentativa de venda para **${args[0]} | ${aaa2.name}** \n\n Discord ID = ${IdentidadeDiscord.id}`)
+                .setColor(cor_das_embeds);  
+                message.reply({ embeds: [embed_8] });
+
+              }else
+              {
+
+                aaa2.Inje = aaa2.Inje + InjecaoCura;
+                aaa2.Bals = aaa2.Bals + Balsamo;
+                aaa2.Poma = aaa2.Poma + PomadaZinco;
+                aaa2.Xaro = aaa2.Xaro + Xarope;
+                aaa2.data = dataHora +" por "+ IdentidadeDiscordNick;
+
+                aaa.Inje = aaa.Inje - InjecaoCura;
+                aaa.Bals = aaa.Bals - Balsamo;
+                aaa.Poma = aaa.Poma - PomadaZinco;
+                aaa.Xaro = aaa.Xaro - Xarope;
+                
+
+                if (foo2 !== undefined){ 
+                  fs.writeFile(fileName2, JSON.stringify(foo2, null, 2), function writeJSON(err) {
                     if (err) return console.log(err);
-                    //console.log(JSON.stringify(foo));
-                    console.log('Escrenvendo em: ' + fileName);
+                    console.log('Escrenvendo em: ' + fileName2);
                   });
+                
+                  if (foo !== undefined){ 
+                    fs.writeFile(fileName, JSON.stringify(foo, null, 2), function writeJSON(err) {
+                      if (err) return console.log(err);
+                      //console.log(JSON.stringify(foo));
+                      console.log('Escrenvendo em: ' + fileName);
+                    });
+                  }
+
+                let embed_8 = new Discord.MessageEmbed()
+
+                //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
+                //.setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
+                
+                .setDescription(`**${message.member.nickname}** Vendeu para\n ID: **${args[0]}**\n Nome: **${aaa2.name}**\n\n Venda em ${dataHora} :\n\n**Injeções de Cura        ${InjecaoCura} \n Balsamo                                        ${Balsamo} \n Pomada de Zinco     ${PomadaZinco}  \n  Xarope                                              ${Xarope}**\n -------------------------------------------\n**Total:                                                     ${PrecoTotal}$**\nPeso=${PresoTotal.toFixed(2)}Kg\n\nDiscord ID = ${IdentidadeDiscord.id}`)
+                .setColor(cor_das_embeds);
+
+                message.reply({ embeds: [embed_8] });
+                //message.reply({ content: `${message.author}`, embeds: [embed_8] });
                 }
-
-              let embed_8 = new Discord.MessageEmbed()
-
-              //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
-              //.setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-              
-              .setDescription(`**${message.member.nickname}** Vendeu para\n ID: **${args[0]}**\n Nome: **${args[1]}**\n\n Venda em ${dataHora} :\n\n**Injeções de Cura        ${InjecaoCura} \n Balsamo                                        ${Balsamo} \n Pomada de Zinco     ${PomadaZinco}  \n  Xarope                                              ${Xarope}**\n -------------------------------------------\n**Total:                                                     ${PrecoTotal}$**\nPeso=${PresoTotal.toFixed(2)}Kg\n\nDiscord ID = ${IdentidadeDiscord.id}`)
-              .setColor(cor_das_embeds);
-
-              message.reply({ embeds: [embed_8] });
-              //message.reply({ content: `${message.author}`, embeds: [embed_8] });
               }
             }else{
               let embed_8 = new Discord.MessageEmbed()
-              .setDescription(`**${message.member.nickname}**\n\n __Você canelou a venda__ \n\n Discord ID = ${IdentidadeDiscord.id}`)
+              .setDescription(`**${message.member.nickname}**\n\n __Você não vendeu nada para__\n ID: **${args[0]}**\n Nome: **${aaa2.name}**\n \n\n Discord ID = ${IdentidadeDiscord.id}`)
               .setColor(cor_das_embeds);  
               message.reply({ embeds: [embed_8] });
             }
@@ -431,7 +445,7 @@ run: async(client, message, args) => {
             //message.reply({ embeds: [embed_8] });
             //message.reply({ content: `${message.author}`, embeds: [embed_8] });
             let embed_8 = new Discord.MessageEmbed()
-            .setDescription(`**${message.member.nickname}**\n\n __Você não encomendou nada__ \n\n Discord ID = ${IdentidadeDiscord.id}`)
+            .setDescription(`**${message.member.nickname}**\n\n __Você cancelou a venda para__\n ID: **${args[0]}**\n Nome: **${aaa2.name}**\n\n Discord ID = ${IdentidadeDiscord.id}`)
             .setColor(cor_das_embeds);  
             message.reply({ embeds: [embed_8] });
 
@@ -457,7 +471,7 @@ run: async(client, message, args) => {
         .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
         //.setAuthor(client.user.username, client.user.displayAvatarURL({ dynamic: true }) )
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription(`** \`${categoria}\` \n ${message.member.nickname} você encomendou:\n Injeções de Cura        ${InjecaoCura}/${Inj.LimiteMedico - aaa.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteMedico - aaa.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteMedico - aaa.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteMedico - aaa.Xaro} \n\n...**`)
+        .setDescription(` \`${categoria}\` \n **${message.member.nickname}** Vendendo para:\n ID: **${args[0]}**\n Nome: **${aaa2.name}**\n Venda:\n **Injeções de Cura        ${InjecaoCura}/${Inj.LimiteCidadao - aaa2.Inje} \n Balsamo                                        ${Balsamo}/${Bal.LimiteCidadao - aaa2.Bals} \n Pomada de Zinco     ${PomadaZinco}/${Pom.LimiteCidadao - aaa2.Poma}  \n  Xarope                                              ${Xarope}/${Xar.LimiteCidadao - aaa2.Xaro} \n\n...**`)
         //.setFooter(`Comando solicitado por ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         .setColor(cor_das_embeds);
         
