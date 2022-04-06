@@ -37,9 +37,10 @@ module.exports = {
         if (foo2 !== undefined){ 
             fs.writeFile(fileName2, JSON.stringify(foo2, null, 2), function writeJSON(err) {
               if (err) return console.log(err);
-              console.log('Zerando medicamentos de: ' + fileName2);
+              
             });
         }
+        console.log('Zerando medicamentos de: ' + fileName2);
     }
 
       const Clear_msg = await message.channel.messages.fetch({

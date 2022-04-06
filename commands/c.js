@@ -84,10 +84,10 @@ run: async(client, message, args) => {
     IdentidadeDiscord = message.author;
     IdentidadeDiscordNick = message.member.nickname;
     
-    console.log("Id Discord (Pedido):")
+    //console.log("Id Discord (Pedido):")
     //console.log(typeof(IdentidadeDiscord.id))
-    console.log(IdentidadeDiscord.id)
-    console.log(message.member.nickname)
+    //console.log(IdentidadeDiscord.id)
+    //console.log(message.member.nickname)
     
     var aaa = foo.results.find(item => item.id === IdentidadeDiscord.id)//parseInt(IdentidadeDiscord.id))
     //var aaab = foo.results.find(item => item.id === "1")//parseInt(IdentidadeDiscord.id))

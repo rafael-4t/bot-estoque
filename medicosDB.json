@@ -4,10 +4,19 @@
       "id": "294487193840254988",
       "name": "RAlfa",
       "nick": "1079 | Jackson Jones",
-      "Inje": 0,
-      "Bals": 0,
-      "Poma": 0,
-      "Xaro": 0
+      "Inje": 1,
+      "Bals": 3,
+      "Poma": 6,
+      "Xaro": 6
+    },
+    {
+      "id": "252857362329763843",
+      "name": "𝔇𝔞𝔫𝔱𝔢 𝔞𝔩𝔬𝔫𝔢",
+      "nick": "Dante Alone",
+      "Inje": 6,
+      "Bals": 6,
+      "Poma": 12,
+      "Xaro": 12
     }
   ]
 }

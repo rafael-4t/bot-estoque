@@ -57,6 +57,8 @@ function lerBanco (){
 
 function lerBanco2 (){
   var rawdata2 = fs.readFileSync(fileName2);
+  console.log("rawdata2")
+  console.log(rawdata2)
   var foo2 = JSON.parse(rawdata2);
   //console.log(foo);
   return foo2;
@@ -169,7 +171,7 @@ run: async(client, message, args) => {
         console.log('Escrenvendo em: ' + fileName2);
       });
       }
-      aaa2 = lerBanco2();
+      //aaa2 = lerBanco2();
       aaa2 = foo2.results.find(item => item.id === args[0])
     }
     //aaa.Inje++;
