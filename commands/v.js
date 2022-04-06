@@ -141,7 +141,7 @@ run: async(client, message, args) => {
         console.log('Escrenvendo em: ' + fileName);
       });
       }
-      aaa = lerBanco();
+      //aaa = lerBanco();
       aaa = foo.results.find(item => item.id === IdentidadeDiscord.id)
     }
 
